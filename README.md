@@ -17,10 +17,10 @@ Here some screenshots:
 
 [LaunchScreen](https://github.com/vmalakhovskiy/RedditViewer/blob/master/ReadmeResources/1.png)
 
-[RedditsList Portrait](https://github.com/vmalakhovskiy/RedditViewer/blob/master/ReadmeResources/2.png)
+[RedditsList Portrait](https://github.com/vmalakhovskiy/RedditViewer/blob/master/ReadmeResources/3.png)
 
-[RedditsList Landscape](https://github.com/vmalakhovskiy/RedditViewer/blob/master/ReadmeResources/2L.png)
+[RedditsList Landscape](https://github.com/vmalakhovskiy/RedditViewer/blob/master/ReadmeResources/3L.png) 
 
-[ImagePreview Portrait](https://github.com/vmalakhovskiy/RedditViewer/blob/master/ReadmeResources/3.png)
+[ImagePreview Portrait](https://github.com/vmalakhovskiy/RedditViewer/blob/master/ReadmeResources/2.png)
 
-[ImagePreview Landscape](https://github.com/vmalakhovskiy/RedditViewer/blob/master/ReadmeResources/3L.png) 
+[ImagePreview Landscape](https://github.com/vmalakhovskiy/RedditViewer/blob/master/ReadmeResources/2L.png)
