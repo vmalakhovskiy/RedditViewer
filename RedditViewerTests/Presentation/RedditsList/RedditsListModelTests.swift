@@ -196,4 +196,20 @@ class RedditsListModelTests: XCTestCase {
 
         XCTAssertEqual(error, receivedError)
     }
+
+    func testImagePreviewModelForReddit_returnsNil_forIndexThatOutOfBounds() {
+        let sut = RedditsListModelImpl(apiManager: FakeRedditApiRequestManager(), reddits: [.random()])
+
+        let model = sut.imagePreviewModelForReddit(at: 999)
+
+        XCTAssertNil(model)
+    }
+
+    func testImagePreviewModelForReddit_returnsModel_forCorrectIndex() {
+        let sut = RedditsListModelImpl(apiManager: FakeRedditApiRequestManager(), reddits: [.restrictedRandom(sourceImage: String.random())])
+
+        let model = sut.imagePreviewModelForReddit(at: 0)
+
+        XCTAssertNotNil(model)
+    }
 }

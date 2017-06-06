@@ -28,12 +28,16 @@ class RedditApiRequestManagerTests: XCTestCase {
         return createSut(with: service)
     }
 
-    func testFetchTopReddits_returnsNoReddits_fromInvalidResponse() {
+    func testFetchTopReddits_returnsEmptyReddits_fromInvalidResponse() {
         let sut = createSut(with: [:])
 
+        var receivedReddits = [Reddit.random()]
+
         let _ = sut.fetchTopReddits(after: nil) { reddits, _, _ in
-            XCTAssertEqual(reddits.count, 0)
+            receivedReddits = reddits
         }
+
+        XCTAssertEqual(receivedReddits.count, 0)
     }
 
     func testFetchTopReddits_returnsParsedReddits_fromValidResponse() {
@@ -52,18 +56,24 @@ class RedditApiRequestManagerTests: XCTestCase {
                 ]
             ]
         ])
+        var receivedReddits = [Reddit]()
 
         let _ = sut.fetchTopReddits(after: nil) { reddits, _, _ in
-            XCTAssertEqual(reddits.count, 3)
+            receivedReddits = reddits
         }
+
+        XCTAssertEqual(receivedReddits.count, 3)
     }
 
     func testFetchTopReddits_returnsEmptyAfter_fromInvalidResponse() {
         let sut = createSut(with: [:])
 
+        var receivedAfter: String? = String.random()
         let _ = sut.fetchTopReddits(after: nil) { _, after, _ in
-            XCTAssertNil(after)
+            receivedAfter = after
         }
+
+        XCTAssertNil(receivedAfter)
     }
 
     func testFetchTopReddits_returnsCorrectAfter_fromValidResponse() {
@@ -78,20 +88,26 @@ class RedditApiRequestManagerTests: XCTestCase {
                 "after": after
             ]
         ])
+        var receivedAfter: String? = nil
 
-        let _ = sut.fetchTopReddits(after: nil) { _, receivedAfter, _ in
-            XCTAssertEqual(receivedAfter, after)
+        let _ = sut.fetchTopReddits(after: nil) { _, aft, _ in
+            receivedAfter = aft
         }
+
+        XCTAssertEqual(receivedAfter, after)
     }
 
     func testFetchTopReddits_returnsError_ifOccured() {
-        let error = NSError(domain: "com.redditViewer.testError", code: 666, userInfo: nil)
+        let error = NSError.random()
         let service = RedditApiServiceImpl(predefinedResponse: (nil, nil, error))
         let sut = RedditApiRequestManagerImpl(apiService: service)
+        var receivedError: NSError? = nil
 
-        let _ = sut.fetchTopReddits(after: nil) { _, _, receivedError in
-            XCTAssertEqual(receivedError as NSError?, error)
+        let _ = sut.fetchTopReddits(after: nil) { _, _, err in
+            receivedError = err as NSError?
         }
+
+        XCTAssertEqual(receivedError, error)
     }
 
     func testFetchTopReddits_passCorrectTokenParameter_ifAfterParameterIsNil() {

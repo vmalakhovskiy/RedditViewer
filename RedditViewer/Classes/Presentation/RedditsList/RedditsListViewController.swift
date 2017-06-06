@@ -59,6 +59,15 @@ class RedditsListViewController: UITableViewController {
         return UITableViewCell()
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let model = model.imagePreviewModelForReddit(at: indexPath.row),
+            let controller: ImagePreviewViewController = storyboard?.instantiateViewController() {
+            controller.model = model
+            present(controller, animated: true, completion: nil)
+        }
+    }
+
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if cell is RedditsListLoadingCell {
             model.fetchMoreTopReddits { progress in

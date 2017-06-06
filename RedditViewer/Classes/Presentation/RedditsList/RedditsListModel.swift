@@ -19,6 +19,7 @@ protocol RedditsListModel {
     var viewData: [RedditsListViewData] { get }
     func fetchTopReddits(with progressHandler: ((OperationState<[RedditsListViewData], NSError>) -> ())?)
     func fetchMoreTopReddits(with progressHandler: ((OperationState<[RedditsListViewData], NSError>) -> ())?)
+    func imagePreviewModelForReddit(at index: Int) -> ImagePreviewModel?
 }
 
 // MARK: Implementation
@@ -81,6 +82,16 @@ class RedditsListModelImpl: RedditsListModel {
                 progressHandler?(.success(value: strongSelf.viewData))
             }
         }
+    }
+
+    func imagePreviewModelForReddit(at index: Int) -> ImagePreviewModel? {
+        guard
+            let reddit = reddits[safe: index],
+            let imageUrl = reddit.sourceImage
+            else {
+                return nil
+        }
+        return ImagePreviewModelFactory.default(sourceImageUrl: imageUrl)
     }
 
     private func viewData(with reddits:[Reddit], hasMoreData: Bool) -> [RedditsListViewData] {
