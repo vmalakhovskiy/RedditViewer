@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RedditViewer/Classes/Presentation/RedditsList/RedditsListViewController.swift"
+            timestampString = "518448714.402334"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
+            landmarkName = "indexPathForElement(withModelIdentifier:in:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RedditViewer.RedditsListViewController.indexPathForElement (withModelIdentifier : Swift.String, in : __ObjC.UIView) -&gt; Swift.Optional&lt;Foundation.IndexPath&gt;"
+                  moduleName = "RedditViewer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Projects/RedditViewer/RingLabs/RedditViewer/RedditViewer/Classes/Presentation/RedditsList/RedditsListViewController.swift"
+                  timestampString = "518447857.849543"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "192"
+                  endingLineNumber = "192"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RedditViewer.RedditsListViewController.(indexPathForElement (withModelIdentifier : Swift.String, in : __ObjC.UIView) -&gt; Swift.Optional&lt;Foundation.IndexPath&gt;).(closure #1)"
+                  moduleName = "RedditViewer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Projects/RedditViewer/RingLabs/RedditViewer/RedditViewer/Classes/Presentation/RedditsList/RedditsListViewController.swift"
+                  timestampString = "518447857.850752"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "193"
+                  endingLineNumber = "193"
+                  offsetFromSymbolStart = "43">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
