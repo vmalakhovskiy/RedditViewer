@@ -1,27 +1,61 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lNo-zJ-bgx">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="EHf-IW-A2E">
+        <scene sceneID="aYG-Pt-qeL">
             <objects>
-                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                <viewController id="lNo-zJ-bgx" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
-                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                        <viewControllerLayoutGuide type="top" id="kIA-ra-9Xp"/>
+                        <viewControllerLayoutGuide type="bottom" id="6d7-mg-mBx"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                    <view key="view" contentMode="scaleToFill" id="6ef-fW-Izm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HappyReddit" translatesAutoresizingMaskIntoConstraints="NO" id="B7w-DA-nXn">
+                                <rect key="frame" x="111" y="202.5" width="153" height="212"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoOnlyText" translatesAutoresizingMaskIntoConstraints="NO" id="Tlc-p0-rZT">
+                                <rect key="frame" x="112.5" y="437.5" width="150" height="24"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.80915844439999995" green="0.88900429010000004" blue="0.97233945129999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="B7w-DA-nXn" secondAttribute="centerY" constant="25" id="DOZ-i6-X2J"/>
+                            <constraint firstItem="Tlc-p0-rZT" firstAttribute="centerX" secondItem="6ef-fW-Izm" secondAttribute="centerX" id="LNd-Vg-aCq"/>
+                            <constraint firstItem="B7w-DA-nXn" firstAttribute="centerX" secondItem="6ef-fW-Izm" secondAttribute="centerX" id="bbs-d3-r27"/>
+                            <constraint firstItem="Tlc-p0-rZT" firstAttribute="top" secondItem="B7w-DA-nXn" secondAttribute="bottom" constant="23" id="pfQ-Pi-2zX"/>
+                        </constraints>
+                        <variation key="heightClass=regular">
+                            <mask key="subviews">
+                                <include reference="B7w-DA-nXn"/>
+                                <include reference="Tlc-p0-rZT"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="DOZ-i6-X2J"/>
+                                <include reference="bbs-d3-r27"/>
+                                <include reference="pfQ-Pi-2zX"/>
+                                <include reference="LNd-Vg-aCq"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ahy-B9-IGf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.989130434782609" y="373.91304347826087"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="HappyReddit" width="153" height="212"/>
+        <image name="LogoOnlyText" width="150" height="24"/>
+    </resources>
 </document>
