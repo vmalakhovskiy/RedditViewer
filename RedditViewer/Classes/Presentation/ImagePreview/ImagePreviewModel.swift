@@ -9,16 +9,6 @@
 import Foundation
 import UIKit
 
-protocol PhotosAlbumSaver {
-    func saveImageToCameraRoll(image: UIImage, with completion: ((Error?) -> ())?)
-}
-
-class EmptyPhotosAlbumSaver: PhotosAlbumSaver {
-    func saveImageToCameraRoll(image: UIImage, with completion: ((Error?) -> ())?) {
-        completion?(nil)
-    }
-}
-
 // MARK: Protocol
 
 protocol ImagePreviewModel {
@@ -99,7 +89,7 @@ class ImagePreviewModelFactory {
         return ImagePreviewModelImpl(
             imageDownloader: ImageDownloaderFactory.default(),
             sourceImageUrl: sourceImageUrl,
-            photosAlbumSaver: EmptyPhotosAlbumSaver(),
+            photosAlbumSaver: PhotosAlbumSaverFactory.default(),
             storedImage: nil
         )
     }
