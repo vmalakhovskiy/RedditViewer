@@ -42,6 +42,11 @@
 		4E0476081EE6D0D100EF9579 /* UIStoryboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0476071EE6D0D100EF9579 /* UIStoryboardExtensions.swift */; };
 		4E04760B1EE6D17400EF9579 /* FakeImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0476091EE6D17400EF9579 /* FakeImageDownloader.swift */; };
 		4E04760C1EE6D17400EF9579 /* FakePhotosAlbumSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04760A1EE6D17400EF9579 /* FakePhotosAlbumSaver.swift */; };
+		4E0476131EE6D61400EF9579 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0476121EE6D61400EF9579 /* ImageDownloader.swift */; };
+		4E0476171EE6D63A00EF9579 /* ImageDownloaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0476161EE6D63A00EF9579 /* ImageDownloaderTests.swift */; };
+		4E04761A1EE6D67900EF9579 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0476191EE6D67900EF9579 /* ImageCache.swift */; };
+		4E04761D1EE6D6C000EF9579 /* FakeDataTaskProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04761B1EE6D6C000EF9579 /* FakeDataTaskProvider.swift */; };
+		4E04761E1EE6D6C000EF9579 /* FakeImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04761C1EE6D6C000EF9579 /* FakeImageCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +99,11 @@
 		4E0476071EE6D0D100EF9579 /* UIStoryboardExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtensions.swift; sourceTree = "<group>"; };
 		4E0476091EE6D17400EF9579 /* FakeImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeImageDownloader.swift; sourceTree = "<group>"; };
 		4E04760A1EE6D17400EF9579 /* FakePhotosAlbumSaver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakePhotosAlbumSaver.swift; sourceTree = "<group>"; };
+		4E0476121EE6D61400EF9579 /* ImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		4E0476161EE6D63A00EF9579 /* ImageDownloaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloaderTests.swift; sourceTree = "<group>"; };
+		4E0476191EE6D67900EF9579 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		4E04761B1EE6D6C000EF9579 /* FakeDataTaskProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeDataTaskProvider.swift; sourceTree = "<group>"; };
+		4E04761C1EE6D6C000EF9579 /* FakeImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeImageCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +155,7 @@
 		4E04759D1EE6BA7D00EF9579 /* RedditViewerTests */ = {
 			isa = PBXGroup;
 			children = (
+				4E0476141EE6D63A00EF9579 /* Services */,
 				4E0475EB1EE6C45400EF9579 /* Presentation */,
 				4E0475DA1EE6C0A100EF9579 /* Stubs */,
 				4E0475D71EE6C07100EF9579 /* Common */,
@@ -159,6 +170,7 @@
 		4E0475A91EE6BAE900EF9579 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4E0476101EE6D61400EF9579 /* Services */,
 				4E0475EF1EE6C48000EF9579 /* Common */,
 				4E0475CF1EE6C01500EF9579 /* Data */,
 				4E0475C31EE6BD6500EF9579 /* Extensions */,
@@ -264,6 +276,8 @@
 		4E0475DA1EE6C0A100EF9579 /* Stubs */ = {
 			isa = PBXGroup;
 			children = (
+				4E04761B1EE6D6C000EF9579 /* FakeDataTaskProvider.swift */,
+				4E04761C1EE6D6C000EF9579 /* FakeImageCache.swift */,
 				4E0476091EE6D17400EF9579 /* FakeImageDownloader.swift */,
 				4E04760A1EE6D17400EF9579 /* FakePhotosAlbumSaver.swift */,
 				4E0475FA1EE6C61B00EF9579 /* FakeRedditApiRequestManager.swift */,
@@ -349,6 +363,47 @@
 				4E0476051EE6D09D00EF9579 /* ImagePreviewModelTests.swift */,
 			);
 			path = ImagePreview;
+			sourceTree = "<group>";
+		};
+		4E0476101EE6D61400EF9579 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4E0476181EE6D67900EF9579 /* ImageCache */,
+				4E0476111EE6D61400EF9579 /* ImageDownloader */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		4E0476111EE6D61400EF9579 /* ImageDownloader */ = {
+			isa = PBXGroup;
+			children = (
+				4E0476121EE6D61400EF9579 /* ImageDownloader.swift */,
+			);
+			path = ImageDownloader;
+			sourceTree = "<group>";
+		};
+		4E0476141EE6D63A00EF9579 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4E0476151EE6D63A00EF9579 /* ImageDownloader */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		4E0476151EE6D63A00EF9579 /* ImageDownloader */ = {
+			isa = PBXGroup;
+			children = (
+				4E0476161EE6D63A00EF9579 /* ImageDownloaderTests.swift */,
+			);
+			path = ImageDownloader;
+			sourceTree = "<group>";
+		};
+		4E0476181EE6D67900EF9579 /* ImageCache */ = {
+			isa = PBXGroup;
+			children = (
+				4E0476191EE6D67900EF9579 /* ImageCache.swift */,
+			);
+			path = ImageCache;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -460,6 +515,7 @@
 				4E0475EA1EE6C42900EF9579 /* RedditsListViewController.swift in Sources */,
 				4E0475F31EE6C48000EF9579 /* OperationState.swift in Sources */,
 				4E0475FE1EE6CBD300EF9579 /* RedditsListLoadingCell.swift in Sources */,
+				4E0476131EE6D61400EF9579 /* ImageDownloader.swift in Sources */,
 				4E0475F91EE6C5B200EF9579 /* UIImageViewExtensions.swift in Sources */,
 				4E0475BE1EE6BC9000EF9579 /* RedditApiService.swift in Sources */,
 				4E0475CD1EE6C00B00EF9579 /* DataTaskProvider.swift in Sources */,
@@ -474,6 +530,7 @@
 				4E0476081EE6D0D100EF9579 /* UIStoryboardExtensions.swift in Sources */,
 				4E0475D11EE6C01500EF9579 /* Reddit.swift in Sources */,
 				4E0475F71EE6C59A00EF9579 /* CalendarExtensions.swift in Sources */,
+				4E04761A1EE6D67900EF9579 /* ImageCache.swift in Sources */,
 				4E0476031EE6D02F00EF9579 /* ImagePreviewViewController.swift in Sources */,
 				4E0475BF1EE6BC9000EF9579 /* RedditApiToken.swift in Sources */,
 				4E0475E61EE6C42900EF9579 /* RedditsListCell.swift in Sources */,
@@ -490,9 +547,12 @@
 				4E0475D91EE6C07100EF9579 /* Random.swift in Sources */,
 				4E04760B1EE6D17400EF9579 /* FakeImageDownloader.swift in Sources */,
 				4E0475C81EE6BDAA00EF9579 /* CollectionTypeExtensionsTests.swift in Sources */,
+				4E0476171EE6D63A00EF9579 /* ImageDownloaderTests.swift in Sources */,
 				4E0475DC1EE6C0A100EF9579 /* EntitiesRandomExtensions.swift in Sources */,
+				4E04761E1EE6D6C000EF9579 /* FakeImageCache.swift in Sources */,
 				4E04760C1EE6D17400EF9579 /* FakePhotosAlbumSaver.swift in Sources */,
 				4E0475FB1EE6C61B00EF9579 /* FakeRedditApiRequestManager.swift in Sources */,
+				4E04761D1EE6D6C000EF9579 /* FakeDataTaskProvider.swift in Sources */,
 				4E0475D61EE6C05800EF9579 /* RedditApiRequestManagerTests.swift in Sources */,
 				4E0475D41EE6C05000EF9579 /* RedditTests.swift in Sources */,
 				4E0475EE1EE6C45400EF9579 /* RedditsListModelTests.swift in Sources */,

@@ -97,7 +97,7 @@ class ImagePreviewModelImpl: ImagePreviewModel {
 class ImagePreviewModelFactory {
     static func `default`(sourceImageUrl: String) -> ImagePreviewModel {
         return ImagePreviewModelImpl(
-            imageDownloader: ImageDownloaderImpl(),
+            imageDownloader: ImageDownloaderFactory.default(),
             sourceImageUrl: sourceImageUrl,
             photosAlbumSaver: EmptyPhotosAlbumSaver(),
             storedImage: nil

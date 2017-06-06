@@ -9,16 +9,6 @@
 import Foundation
 import UIKit
 
-protocol ImageDownloader {
-    func downloadImage(with url: URL, completion: ((UIImage?) -> ())?) -> Cancellable
-}
-
-class ImageDownloaderImpl: ImageDownloader {
-    func downloadImage(with url: URL, completion: ((UIImage?) -> ())?) -> Cancellable {
-        return EmptyCancellable()
-    }
-}
-
 // MARK: Implementation
 
 struct RedditsListCellViewData {
@@ -101,6 +91,10 @@ func ==(lhs: RedditsListCellViewData, rhs: RedditsListCellViewData) -> Bool {
 
 class RedditsListCellViewDataFactory {
     static func `default`(reddit: Reddit) -> RedditsListCellViewData {
-        return RedditsListCellViewData(reddit: reddit, imageDownloader: ImageDownloaderImpl(), calendar: Calendar.current)
+        return RedditsListCellViewData(
+            reddit: reddit,
+            imageDownloader: ImageDownloaderFactory.default(),
+            calendar: Calendar.current
+        )
     }
 }
