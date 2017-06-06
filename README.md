@@ -10,7 +10,7 @@ My name is Reddie, and I'm here to enlight top Reddit news for you!
 - I can save full-size pictures into gallery
 - I'm in friendship with landscape mode
 - I'm not using any 3-rd party libraries
-- I have ~69% tests coverage
+- I have ~60% tests coverage
 - I'm written purely on Swift 3
 
 Here some screenshots:
