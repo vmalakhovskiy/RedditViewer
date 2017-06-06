@@ -38,7 +38,7 @@ extension RedditApiToken: TargetType {
 
     var parameters: [String : String?] {
         switch self {
-        case .topReddits(let after): return ["count": "50", "after": after]
+        case .topReddits(let after): return ["limit": "50", "after": after]
         }
     }
 }

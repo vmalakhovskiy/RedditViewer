@@ -16,8 +16,8 @@
         <!--Reddits List View Controller-->
         <scene sceneID="viA-AW-kgi">
             <objects>
-                <tableViewController storyboardIdentifier="RedditsListViewController" extendedLayoutIncludesOpaqueBars="YES" id="Pcv-TP-NEq" customClass="RedditsListViewController" customModule="RedditViewer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="91" sectionHeaderHeight="28" sectionFooterHeight="1" id="lNa-ih-EuW">
+                <tableViewController storyboardIdentifier="RedditsListViewController" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Pcv-TP-NEq" customClass="RedditsListViewController" customModule="RedditViewer" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RedditsListTableView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="91" sectionHeaderHeight="28" sectionFooterHeight="1" id="lNa-ih-EuW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -37,7 +37,7 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NfD-vH-LhP">
                                             <rect key="frame" x="8" y="8.5" width="70" height="70"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="70" id="DzP-yw-zsk"/>
+                                                <constraint firstAttribute="height" priority="999" constant="70" id="DzP-yw-zsk"/>
                                                 <constraint firstAttribute="width" constant="70" id="ggx-Bd-37h"/>
                                             </constraints>
                                         </imageView>
@@ -174,7 +174,7 @@
         <!--Navigation Controller-->
         <scene sceneID="hr8-hA-FPD">
             <objects>
-                <navigationController storyboardIdentifier="RootNavigationController" id="NOt-De-Qjt" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="RootNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NOt-De-Qjt" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7RC-3M-Q8k">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -291,27 +291,27 @@
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
-                                            <exclude reference="sF4-Eb-RUT"/>
-                                            <exclude reference="cCA-dS-bOQ"/>
                                             <exclude reference="GVe-S9-RKb"/>
-                                            <exclude reference="hez-sq-lBV"/>
-                                            <exclude reference="L9c-LF-HNS"/>
-                                            <exclude reference="zsN-FP-0bM"/>
+                                            <exclude reference="cCA-dS-bOQ"/>
+                                            <exclude reference="sF4-Eb-RUT"/>
                                             <exclude reference="COR-i9-LKa"/>
-                                            <exclude reference="zcq-Fe-y9R"/>
+                                            <exclude reference="L9c-LF-HNS"/>
                                             <exclude reference="XOf-d2-tyG"/>
+                                            <exclude reference="hez-sq-lBV"/>
+                                            <exclude reference="zcq-Fe-y9R"/>
+                                            <exclude reference="zsN-FP-0bM"/>
                                             <exclude reference="38V-SK-hlN"/>
                                             <exclude reference="O8n-1Y-XPL"/>
                                         </mask>
                                     </variation>
                                     <variation key="heightClass=compact">
                                         <mask key="constraints">
-                                            <include reference="hez-sq-lBV"/>
                                             <include reference="L9c-LF-HNS"/>
+                                            <include reference="hez-sq-lBV"/>
                                             <exclude reference="yK3-Bx-W1i"/>
-                                            <exclude reference="hAJ-a0-AeY"/>
                                             <exclude reference="E94-aU-VXl"/>
                                             <include reference="O8n-1Y-XPL"/>
+                                            <exclude reference="hAJ-a0-AeY"/>
                                         </mask>
                                     </variation>
                                     <variation key="heightClass=regular">
@@ -319,20 +319,20 @@
                                             <include reference="0sp-iL-tDg"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <include reference="sF4-Eb-RUT"/>
-                                            <exclude reference="dFc-rv-rtQ"/>
                                             <exclude reference="3PL-QE-8CE"/>
-                                            <include reference="cCA-dS-bOQ"/>
-                                            <exclude reference="Pu7-eh-1Jr"/>
-                                            <exclude reference="l7t-8R-s8V"/>
                                             <include reference="GVe-S9-RKb"/>
-                                            <exclude reference="bgx-hS-nYO"/>
-                                            <include reference="zsN-FP-0bM"/>
+                                            <exclude reference="Pu7-eh-1Jr"/>
+                                            <include reference="cCA-dS-bOQ"/>
+                                            <exclude reference="dFc-rv-rtQ"/>
+                                            <exclude reference="l7t-8R-s8V"/>
+                                            <include reference="sF4-Eb-RUT"/>
                                             <exclude reference="1Ac-df-rIE"/>
                                             <include reference="COR-i9-LKa"/>
+                                            <exclude reference="XOf-d2-tyG"/>
+                                            <exclude reference="bgx-hS-nYO"/>
                                             <exclude reference="yK3-Bx-W1i"/>
                                             <include reference="zcq-Fe-y9R"/>
-                                            <exclude reference="XOf-d2-tyG"/>
+                                            <include reference="zsN-FP-0bM"/>
                                             <include reference="38V-SK-hlN"/>
                                             <exclude reference="E94-aU-VXl"/>
                                             <exclude reference="RRy-ud-vKE"/>

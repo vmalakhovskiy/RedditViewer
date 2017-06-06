@@ -18,7 +18,32 @@ class RedditsListViewController: UITableViewController {
         setupNavigationController()
         setupTableView()
         setupRefreshControl()
-        reloadReddits()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        model.fetchTopRedditsIfNeeded { progress in
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+                switch progress {
+                case .inProgress:
+                    let activity = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+                    activity.color = CommonAppearance.titleTextColor
+                    activity.startAnimating()
+                    strongSelf.tableView.backgroundView = activity
+                case .success(value: let reddits): ()
+                if reddits.isEmpty {
+                    strongSelf.tableView.backgroundView = strongSelf.noRedditsView()
+                } else {
+                    strongSelf.tableView.backgroundView = nil
+                }
+                strongSelf.tableView.reloadData()
+                case .failure(error: let error):
+                    strongSelf.tableView.backgroundView = nil
+                    strongSelf.showAlert(with: error)
+                }
+            }
+        }
     }
 
     private func setupNavigationController() {
@@ -26,7 +51,6 @@ class RedditsListViewController: UITableViewController {
     }
 
     private func setupTableView() {
-        tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 150
     }
@@ -112,6 +136,12 @@ class RedditsListViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
 
+
+    override func decodeRestorableState(with coder: NSCoder) {
+        model.loadDataFromStorage()
+        super.decodeRestorableState(with: coder)
+    }
+
     private func noRedditsView() -> UIView {
         let view = UIView()
         let imageView = UIImageView(image: #imageLiteral(resourceName: "SadReddit"))
@@ -138,5 +168,27 @@ class RedditsListViewController: UITableViewController {
             NSLayoutConstraint(item: label, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0),
             ])
         return view
+    }
+}
+
+extension RedditsListViewController: UIDataSourceModelAssociation {
+    func modelIdentifierForElement(at idx: IndexPath, in view: UIView) -> String? {
+        if let data = model.viewData[safe: idx.row], case .reddit(let viewData) = data {
+            return viewData.name
+        }
+        return nil
+    }
+
+    func indexPathForElement(withModelIdentifier identifier: String, in view: UIView) -> IndexPath? {
+        let item = model.viewData.index { viewData in
+            if case .reddit(let data) = viewData {
+                return data.name == identifier
+            }
+            return false
+        }
+        if let item = item {
+            return IndexPath(row: item, section: 0)
+        }
+        return nil
     }
 }

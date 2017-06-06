@@ -17,6 +17,8 @@ enum RedditsListViewData {
 
 protocol RedditsListModel {
     var viewData: [RedditsListViewData] { get }
+    func loadDataFromStorage()
+    func fetchTopRedditsIfNeeded(with progressHandler: ((OperationState<[RedditsListViewData], NSError>) -> ())?)
     func fetchTopReddits(with progressHandler: ((OperationState<[RedditsListViewData], NSError>) -> ())?)
     func fetchMoreTopReddits(with progressHandler: ((OperationState<[RedditsListViewData], NSError>) -> ())?)
     func imagePreviewModelForReddit(at index: Int) -> ImagePreviewModel?
@@ -25,6 +27,7 @@ protocol RedditsListModel {
 // MARK: Implementation
 
 class RedditsListModelImpl: RedditsListModel {
+    private let storage: RedditsListDataStorage
     private let apiManager: RedditApiRequestManager
     private var reddits: [Reddit] {
         didSet {
@@ -39,13 +42,33 @@ class RedditsListModelImpl: RedditsListModel {
         apiManager: RedditApiRequestManager,
         reddits: [Reddit] = [],
         after: String? = nil,
+        storage: RedditsListDataStorage,
         predefinedFetchOperation: Cancellable? = nil
     ) {
         self.apiManager = apiManager
+        self.storage = storage
         self.after = after
         self.reddits = reddits
         self.viewData = viewData(with: reddits, hasMoreData: after != nil && reddits.isNotEmpty)
         self.currentFetchOperation = predefinedFetchOperation
+    }
+
+    func loadDataFromStorage() {
+        after = storage.getAfter()
+        reddits = storage.getReddits()
+    }
+
+    func saveDataToStorage() {
+        if let after = after {
+            storage.safe(after: after)
+        }
+        storage.save(reddits: reddits)
+    }
+
+    func fetchTopRedditsIfNeeded(with progressHandler: ((OperationState<[RedditsListViewData], NSError>) -> ())?) {
+        if reddits.isEmpty {
+            fetchTopReddits(with: progressHandler)
+        }
     }
 
     func fetchTopReddits(with progressHandler: ((OperationState<[RedditsListViewData], NSError>) -> ())?) {
@@ -61,6 +84,7 @@ class RedditsListModelImpl: RedditsListModel {
             } else {
                 strongSelf.after = after
                 strongSelf.reddits = reddits
+                strongSelf.saveDataToStorage()
                 progressHandler?(.success(value: strongSelf.viewData))
             }
         }
@@ -79,6 +103,7 @@ class RedditsListModelImpl: RedditsListModel {
             } else {
                 strongSelf.after = after
                 strongSelf.reddits += reddits
+                strongSelf.saveDataToStorage()
                 progressHandler?(.success(value: strongSelf.viewData))
             }
         }
@@ -88,8 +113,8 @@ class RedditsListModelImpl: RedditsListModel {
         guard
             let reddit = reddits[safe: index],
             let imageUrl = reddit.sourceImage
-            else {
-                return nil
+        else {
+            return nil
         }
         return ImagePreviewModelFactory.default(sourceImageUrl: imageUrl)
     }
@@ -105,7 +130,8 @@ class RedditsListModelImpl: RedditsListModel {
 class RedditsListModelFactory {
     static func `default`() -> RedditsListModel {
         return RedditsListModelImpl(
-            apiManager: RedditApiRequestManagerFactory.default()
+            apiManager: RedditApiRequestManagerFactory.default(),
+            storage: RedditsListDataStorageFactory.default()
         )
     }
 }
