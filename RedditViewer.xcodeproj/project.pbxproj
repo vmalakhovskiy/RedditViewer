@@ -35,6 +35,7 @@
 		4E0475F71EE6C59A00EF9579 /* CalendarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0475F61EE6C59A00EF9579 /* CalendarExtensions.swift */; };
 		4E0475F91EE6C5B200EF9579 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0475F81EE6C5B200EF9579 /* UIImageViewExtensions.swift */; };
 		4E0475FB1EE6C61B00EF9579 /* FakeRedditApiRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0475FA1EE6C61B00EF9579 /* FakeRedditApiRequestManager.swift */; };
+		4E0475FE1EE6CBD300EF9579 /* RedditsListLoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0475FD1EE6CBD300EF9579 /* RedditsListLoadingCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		4E0475F61EE6C59A00EF9579 /* CalendarExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarExtensions.swift; sourceTree = "<group>"; };
 		4E0475F81EE6C5B200EF9579 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		4E0475FA1EE6C61B00EF9579 /* FakeRedditApiRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeRedditApiRequestManager.swift; sourceTree = "<group>"; };
+		4E0475FD1EE6CBD300EF9579 /* RedditsListLoadingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditsListLoadingCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +269,7 @@
 		4E0475DE1EE6C42900EF9579 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				4E0475FC1EE6CBAB00EF9579 /* RedditsListLoadingCell */,
 				4E0475DF1EE6C42900EF9579 /* RedditsListCell */,
 			);
 			path = Cells;
@@ -304,6 +307,14 @@
 				4E0475F11EE6C48000EF9579 /* OperationState.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		4E0475FC1EE6CBAB00EF9579 /* RedditsListLoadingCell */ = {
+			isa = PBXGroup;
+			children = (
+				4E0475FD1EE6CBD300EF9579 /* RedditsListLoadingCell.swift */,
+			);
+			path = RedditsListLoadingCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,6 +425,7 @@
 			files = (
 				4E0475EA1EE6C42900EF9579 /* RedditsListViewController.swift in Sources */,
 				4E0475F31EE6C48000EF9579 /* OperationState.swift in Sources */,
+				4E0475FE1EE6CBD300EF9579 /* RedditsListLoadingCell.swift in Sources */,
 				4E0475F91EE6C5B200EF9579 /* UIImageViewExtensions.swift in Sources */,
 				4E0475BE1EE6BC9000EF9579 /* RedditApiService.swift in Sources */,
 				4E0475CD1EE6C00B00EF9579 /* DataTaskProvider.swift in Sources */,

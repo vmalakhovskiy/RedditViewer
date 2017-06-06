@@ -46,11 +46,32 @@ class RedditsListViewController: UITableViewController {
             return UITableViewCell()
         }
 
-        if let cell = tableView.dequeueReusableCell(withIdentifier: RedditsListCell.reuseIdentifier) as? RedditsListCell {
-            cell.populate(with: redditListViewData)
+        if let cell = tableView.dequeueReusableCell(withIdentifier: RedditsListCell.reuseIdentifier) as? RedditsListCell,
+            case .reddit(let viewData) = redditListViewData
+        {
+            cell.populate(with: viewData)
+            return cell
+        } else if let cell = tableView.dequeueReusableCell(withIdentifier: RedditsListLoadingCell.reuseIdentifier) as? RedditsListLoadingCell,
+            case .loadMore = redditListViewData {
+            cell.configureAppearance()
             return cell
         }
         return UITableViewCell()
+    }
+
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if cell is RedditsListLoadingCell {
+            model.fetchMoreTopReddits { progress in
+                DispatchQueue.main.async { [weak self] in
+                    guard let strongSelf = self else { return }
+                    switch progress {
+                    case .inProgress: ()
+                    case .success: strongSelf.tableView.reloadData()
+                    case .failure(error: let error): strongSelf.showAlert(with: error)
+                    }
+                }
+            }
+        }
     }
 
     @objc private func reloadReddits() {
@@ -61,13 +82,13 @@ class RedditsListViewController: UITableViewController {
                 switch progress {
                 case .inProgress: ()
                 case .success(value: let reddits): ()
-                    if reddits.isEmpty {
-                        strongSelf.tableView.backgroundView = strongSelf.noRedditsView()
-                    } else {
-                        strongSelf.tableView.backgroundView = nil
-                    }
-                    strongSelf.refreshControl?.endRefreshing()
-                    strongSelf.tableView.reloadData()
+                if reddits.isEmpty {
+                    strongSelf.tableView.backgroundView = strongSelf.noRedditsView()
+                } else {
+                    strongSelf.tableView.backgroundView = nil
+                }
+                strongSelf.refreshControl?.endRefreshing()
+                strongSelf.tableView.reloadData()
                 case .failure(error: let error):
                     strongSelf.refreshControl?.endRefreshing()
                     strongSelf.showAlert(with: error)
@@ -106,7 +127,7 @@ class RedditsListViewController: UITableViewController {
             NSLayoutConstraint(item: imageView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0),
             NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal, toItem: imageView, attribute: .bottom, multiplier: 1, constant: 10),
             NSLayoutConstraint(item: label, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0),
-        ])
+            ])
         return view
     }
 }

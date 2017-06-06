@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="Yph-yp-WCf" userLabel="EmptyFooter">
-                            <rect key="frame" x="0.0" y="119" width="375" height="0.0"/>
+                            <rect key="frame" x="0.0" y="210" width="375" height="0.0"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
@@ -113,6 +113,30 @@
                                     <outlet property="thumbnailImageActivityIndicator" destination="jLn-XH-xvo" id="3HP-MV-imk"/>
                                     <outlet property="thumbnailImageView" destination="NfD-vH-LhP" id="rXE-p2-nba"/>
                                     <outlet property="titleLabel" destination="cLQ-dS-uZf" id="gjC-Z4-rg0"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RedditsListLoadingCell" id="KRo-zR-q26" customClass="RedditsListLoadingCell" customModule="RedditViewer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="119" width="375" height="91"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KRo-zR-q26" id="lgM-gU-NpE">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="YMc-lP-kZJ">
+                                            <rect key="frame" x="169" y="27" width="37" height="37"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="color" red="0.80915844439999995" green="0.88900429010000004" blue="0.97233945129999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="YMc-lP-kZJ" firstAttribute="top" secondItem="lgM-gU-NpE" secondAttribute="topMargin" constant="19" id="MA7-fc-Kvv"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="YMc-lP-kZJ" secondAttribute="bottom" constant="18.5" id="jdc-J9-1en"/>
+                                        <constraint firstItem="YMc-lP-kZJ" firstAttribute="centerX" secondItem="lgM-gU-NpE" secondAttribute="centerX" id="rHt-vQ-SLm"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="loadingActivityIndicator" destination="YMc-lP-kZJ" id="atb-iB-wv8"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
